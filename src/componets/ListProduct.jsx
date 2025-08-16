@@ -33,9 +33,7 @@ export default function ListProduct() {
         setAddedProducts(curr => curr.filter(p => p.name !== product.name))
     }
 
-    const totalPay = addedProducts.reduce((acc, p) => {
-        return acc + (p.price * p.quantity)
-    }, 0)
+    const totalPay = addedProducts.reduce((acc, p) => acc + (p.price * p.quantity), 0)
 
     return (
         <>
