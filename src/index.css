@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 h1{
   margin-bottom: 50px;
 }
@@ -11,3 +12,8 @@ h1{
   width: 300px;
   margin: 0 auto;
 }
+
+p, button, ul, h2{
+  margin-bottom: 10px;
+}
+
