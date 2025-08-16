@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import ListProduct from './componets/ListProduct'
 
 function App() {

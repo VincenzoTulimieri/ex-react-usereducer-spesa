@@ -14,13 +14,13 @@ export default function ListProduct() {
             }
             return p
         }))
-        
+
     }
 
     function addToCart(product) {
-        const addProducts = addedProducts.find(p => p.name === product.name)
-        if (addProducts) {
-            updateProductQuantity(addProducts.name, addProducts.quantity + 1)
+        const addProduct = addedProducts.find(p => p.name === product.name)
+        if (addProduct) {
+            updateProductQuantity(addProduct.name, addProduct.quantity + 1)
             return
         }
         setAddedProducts(curr => ([...curr, {
@@ -30,10 +30,10 @@ export default function ListProduct() {
     }
 
     function removeFromCart(product) {
-        setAddedProducts(curr=>curr.filter(p => p.name !== product.name))
+        setAddedProducts(curr => curr.filter(p => p.name !== product.name))
     }
 
-    const totalPay = addedProducts.reduce((acc, p)=>{
+    const totalPay = addedProducts.reduce((acc, p) => {
         return acc + (p.price * p.quantity)
     }, 0)
 
