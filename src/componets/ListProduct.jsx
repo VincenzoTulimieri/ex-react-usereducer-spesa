@@ -1,6 +1,12 @@
+import { useState } from "react"
 import products from "../../data/data"
 
 export default function ListPruduct(){
+    const [addProducts, setAddProduct] = useState([])
+
+
+
+
     return(
         <>
         <ul>
@@ -10,6 +16,7 @@ export default function ListPruduct(){
                 )
             })}
         </ul>
+
         </>
     )
 }

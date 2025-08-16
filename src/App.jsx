@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ListPruduct from './componets/ListPruduct'
+import ListPruduct from './componets/ListProduct'
 
 function App() {
 
