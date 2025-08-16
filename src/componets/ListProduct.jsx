@@ -2,14 +2,27 @@ import { useState } from "react"
 import products from "../../data/data"
 
 export default function ListPruduct() {
-    const [addProducts, setAddProducts] = useState([])
+    const [addedProducts, setAddedProducts] = useState([])
+
+    function updateProductQuantity(name, quantity){
+        setAddedProducts(curr=>curr.map(p=>{
+            if(p.name === name){
+                return {
+                    ...p,
+                    quantity
+                }
+            }
+            return p
+        }))
+    }
 
     function addToCart(product) {
-        const isProductInCart = addProducts.some(p => p.name === product.name)
-        if (isProductInCart) {
+        const addProducts = addedProducts.find(p => p.name === product.name)
+        if (addProducts) {
+            updateProductQuantity(addProducts.name, addProducts.quantity + 1)
             return
         }
-        setAddProducts(curr => ([...curr, {
+        setAddedProducts(curr => ([...curr, {
             ...product,
             quantity: 1
         }]))
@@ -28,10 +41,10 @@ export default function ListPruduct() {
                     )
                 })}
             </ul>
-            {addProducts.length > 0 && (
+            {addedProducts.length > 0 && (
                 <ul>
                     <h2>Carrello</h2>
-                    {addProducts.map((product, i) => {
+                    {addedProducts.map((product, i) => {
                        return(
                         <li key={i}>
                             <p>{product.quantity}:{product.name}({product.price.toFixed(2)} €)</p>
