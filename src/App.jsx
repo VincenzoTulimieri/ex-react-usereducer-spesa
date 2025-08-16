@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ListPruduct from './componets/ListProduct'
+import ListProduct from './componets/ListProduct'
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <div className='container'>
         <h1>Lista della Spesa</h1>
-          <ListPruduct />
+          <ListProduct />
       </div>
     </>
   )

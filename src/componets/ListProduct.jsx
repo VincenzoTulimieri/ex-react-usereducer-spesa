@@ -1,12 +1,12 @@
 import { useState } from "react"
 import products from "../../data/data"
 
-export default function ListPruduct() {
+export default function ListProduct() {
     const [addedProducts, setAddedProducts] = useState([])
 
-    function updateProductQuantity(name, quantity){
-        setAddedProducts(curr=>curr.map(p=>{
-            if(p.name === name){
+    function updateProductQuantity(name, quantity) {
+        setAddedProducts(curr => curr.map(p => {
+            if (p.name === name) {
                 return {
                     ...p,
                     quantity
@@ -14,6 +14,7 @@ export default function ListPruduct() {
             }
             return p
         }))
+        
     }
 
     function addToCart(product) {
@@ -28,13 +29,16 @@ export default function ListPruduct() {
         }]))
     }
 
+    function removeFromCart(product) {
+        setAddedProducts(curr=>curr.filter(p => p.name !== product.name))
+    }
 
     return (
         <>
             <ul>
                 {products.map((product, i) => {
                     return (
-                        <li key={i}>
+                        <li key={product.name}>
                             <p>{product.name}:{product.price.toFixed(2)} €</p>
                             <button onClick={() => addToCart(product)}>Aggingi al carrello</button>
                         </li>
@@ -42,16 +46,20 @@ export default function ListPruduct() {
                 })}
             </ul>
             {addedProducts.length > 0 && (
-                <ul>
-                    <h2>Carrello</h2>
-                    {addedProducts.map((product, i) => {
-                       return(
-                        <li key={i}>
-                            <p>{product.quantity}:{product.name}({product.price.toFixed(2)} €)</p>
-                        </li>
-                       ) 
-                    })}
-                </ul>
+                <>
+                    <ul>
+                        <h2>Carrello</h2>
+                        {addedProducts.map((product, i) => {
+                            return (
+                                <li key={product.name}>
+                                    <p>{product.quantity} x {product.name}({product.price.toFixed(2)} €)</p>
+                                    <button onClick={() => removeFromCart(product)}>Rimuovi</button>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <p>Prezzo totale: €</p>
+                </>
             )}
 
         </>
