@@ -4,9 +4,9 @@ export default function ListPruduct(){
     return(
         <>
         <ul>
-            {products.map(product =>{
+            {products.map((product, i) =>{
                 return(
-                    <li>{product.name}:{product.price} €</li>
+                    <li key={i}>{product.name}:{product.price.toFixed(2)} €</li>
                 )
             })}
         </ul>
