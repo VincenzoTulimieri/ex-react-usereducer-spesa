@@ -1,11 +1,15 @@
 import { useState } from 'react'
+import ListPruduct from './componets/ListPruduct'
 
 function App() {
 
 
   return (
     <>
-      <h1>Lista della Spesa</h1>
+      <div className='container'>
+        <h1>Lista della Spesa</h1>
+          <ListPruduct />
+      </div>
     </>
   )
 }
